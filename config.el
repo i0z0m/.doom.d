@@ -1,42 +1,44 @@
-(defun nm/return-entry-property-names ()
-  "Returns a list of property names excluding the DEFAULT org-mode property names."
-  (let ((my-list (org-entry-properties))
-        (temp-list nil)
-        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
-    (dolist (i my-list) (push (car i) temp-list))
-    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
-    temp-list))
-(nm/return-entry-property-names)
+;;FIXME org-entry-properties
+;;(defun nm/return-entry-property-names ()
+;;  "Returns a list of property names excluding the DEFAULT org-mode property names."
+;;  (let ((my-list (org-entry-properties))
+;;        (temp-list nil)
+;;        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
+;;    (dolist (i my-list) (push (car i) temp-list))
+;;    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
+;;    temp-list))
+;;(nm/return-entry-property-names)
+;;
+;;(defun nm/return-entry-property-value-kill-ring ()
+;;  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
+;;  (interactive)
+;;  (let* ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names)))
+;;        (results (org-entry-get nil choice)))
+;;    (kill-new results)
+;;    (message (format "'%s' was copied to kill-ring" results))))
+;;
+;;(map! :after org
+;;      :map org-mode-map
+;;      :leader
+;;      :prefix ("z" . "nicks functions")
+;;      :desc "Copy property value to kill-ring" "x" #'nm/return-entry-property-value-kill-ring)
 
-(defun nm/return-entry-property-value-kill-ring ()
-  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
-  (interactive)
-  (let* ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names)))
-        (results (org-entry-get nil choice)))
-    (kill-new results)
-    (message (format "'%s' was copied to kill-ring" results))))
-
-(map! :after org
-      :map org-mode-map
-      :leader
-      :prefix ("z" . "nicks functions")
-      :desc "Copy property value to kill-ring" "x" #'nm/return-entry-property-value-kill-ring)
-
-(defun nm/return-entry-property-names ()
-  "Returns a list of property names excluding the DEFAULT org-mode property names."
-  (let ((my-list (org-entry-properties))
-        (temp-list nil)
-        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
-    (dolist (i my-list) (push (car i) temp-list))
-    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
-    temp-list))
-(nm/return-entry-property-names)
-
-(defun nm/return-entry-property-value-kill-ring ()
-  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
-  (interactive)
-  (let ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names))))
-    (kill-new (org-entry-get nil choice))))
+;;FIXME org-entry-properties
+;;(defun nm/return-entry-property-names ()
+;;  "Returns a list of property names excluding the DEFAULT org-mode property names."
+;;  (let ((my-list (org-entry-properties))
+;;        (temp-list nil)
+;;        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
+;;    (dolist (i my-list) (push (car i) temp-list))
+;;    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
+;;    temp-list))
+;;(nm/return-entry-property-names)
+;;
+;;(defun nm/return-entry-property-value-kill-ring ()
+;;  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
+;;  (interactive)
+;;  (let ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names))))
+;;    (kill-new (org-entry-get nil choice))))
 
 (defun nm/org-clarify-properties ()
   "Clarify properties for task."
@@ -59,8 +61,9 @@
       :prefix ("z" . "nicks functions")
       :desc "Clarify Properties" "c" #'nm/org-clarify-properties)
 
-(unless (ivy-completing-read "select: " '("Something"))
-  (error "no output"))
+;;FIXME Something
+;;(unless (ivy-completing-read "select: " '("Something"))
+;;  (error "no output"))
 
 (defun nm/capture-bullet-journal ()
   "Finds bullet journal headline to nest capture headline under."
@@ -349,8 +352,8 @@
       :desc "Outline Org-Directory" "c" #'nm/search-headlines-org-directory
       :desc "Outline GTD directory" "!" #'nm/search-headlines-org-tasks-directory)
 
-(setq user-full-name "Nick Martin"
-      user-mail-address "nmartin84@gmail.com")
+(setq user-full-name "i0z0m"
+      user-mail-address "i0z0mu@gmail.com")
 
 (display-time-mode 1)
 (setq display-time-day-and-date t)
@@ -413,29 +416,28 @@
   (and
    (bind-key "C-<down>" #'+org/insert-item-below)
    ;(setq doom-theme nil)
-   (setq doom-font (font-spec :family "Roboto Mono" :size 20))))
+   (setq doom-font (font-spec :family "Roboto Mono" :size 16))))
 
 (setq diary-file "~/projects/orgmode/diary.org")
 (setq org-directory "~/projects/orgmode/")
 (setq projectile-project-search-path "~/projects/")
 
-(after! org (set-popup-rule! "^\\*lsp-help" :side 'bottom :size .30 :select t)
-  (set-popup-rule! "*helm*" :side 'right :size .30 :select t)
-  (set-popup-rule! "*Org QL View:*" :side 'right :size .25 :select t)
-  (set-popup-rule! "*Org Note*" :side 'bottom :size .35 :select t)
-  (set-popup-rule! "*Capture*" :side 'left :size .30 :select t)
-  (set-popup-rule! "*Python:ob-ipython-py*" :side 'right :size .25 :select t)
-  (set-popup-rule! "*eww*" :side 'right :size .30 :select t)
-  (set-popup-rule! "*CAPTURE-*" :side 'left :size .30 :select t))
+(after! org (set-popup-rule! "^\\*lsp-help" :side 'bottom :size .20 :select t)
+  (set-popup-rule! "*helm*" :side 'right :size .20 :select t)
+  (set-popup-rule! "*Org QL View:*" :side 'right :size .22 :select t)
+  (set-popup-rule! "*Org Note*" :side 'bottom :size .22 :select t)
+  (set-popup-rule! "*Capture*" :side 'left :size .20 :select t)
+  (set-popup-rule! "*Python:ob-ipython-py*" :side 'right :size .18 :select t)
+  (set-popup-rule! "*eww*" :side 'right :size .20 :select t)
+  (set-popup-rule! "*CAPTURE-*" :side 'left :size .20 :select t))
                                         ;(set-popup-rule! "*Org Agenda*" :side 'right :size .35 :select t))
 
 (setq inhibit-compacting-font-caches t)
-(setq doom-font (font-spec :family "IBM Plex Mono" :size 24 :weight 'light)
-      doom-big-font (font-spec :family "IBM Plex Mono" :size 26 :weight 'light)
+(setq doom-font (font-spec :family "IBM Plex Mono" :size 16 :weight 'light)
+      doom-big-font (font-spec :family "IBM Plex Mono" :size 18 :weight 'light)
       doom-variable-pitch-font (font-spec :family "IBM Plex Mono" :weight 'regular :size 20)
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 
-(when (equal window-system 'x) (toggle-frame-fullscreen))
 
 (after! org
   (custom-set-faces!
@@ -747,7 +749,10 @@
           ("PROJ" . +org-todo-next)
           ("TODO" . +org-todo-active)))
 
-(after! org (setq org-agenda-diary-file "~/projects/orgmode/diary.org"
+(after! org (setq org-agenda-files (append (file-expand-wildcards "~/projects/orgmode/*/*.org"))
+                                          ;(file-expand-wildcards "/mnt/c/Users/USER/Dropbox/org/*/*.org"))
+                                          ;or $ln -s /mnt/c/Users/USER/Dropbox/org ~/projects/orgmode
+                  org-agenda-diary-file "~/projects/orgmode/diary.org"
                   org-agenda-dim-blocked-tasks nil ; This has funny behavior, similar to checkbox dependencies.
                   org-agenda-use-time-grid nil
                   org-agenda-tags-column 0
@@ -760,8 +765,6 @@
                   org-enforce-todo-checkbox-dependencies nil ; This has funny behavior, when t and you try changing a value on the parent task, it can lead to Emacs freezing up. TODO See if we can fix the freezing behavior when making changes in org-agenda-mode.
                   org-enforce-todo-dependencies t
                   org-habit-show-habits t))
-
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/projects/orgmode/gtd/*.org") (file-expand-wildcards "~/projects/orgmode/gtd/*/*.org"))))
 
 (after! org (setq org-log-into-drawer t
                   org-log-done 'time
@@ -787,12 +790,12 @@
                      :base-directory "~/projects/orgmode/"
                      :recursive t
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css\\|svg"
-                     :publishing-directory "~/projects/nmartin84.github.io"
+                     :publishing-directory "~/projects/i0z0m.github.io"
                      :publishing-function org-publish-attachment)
                     ("notes"
                      :base-directory "~/projects/orgmode/"
                      :base-extension "org"
-                     :publishing-directory "~/projects/nmartin84.github.io"
+                     :publishing-directory "~/projects/i0z0m.github.io"
                      :section-numbers nil
                      :with-properties nil
                      :with-drawers nil
@@ -913,7 +916,7 @@
   :config
   (setq plantuml-jar-path (expand-file-name "~/.doom.d/plantuml.jar")))
 
-(setq hugo_base_dir "~/projects/braindump/")
+(setq hugo_base_dir "~/projects/starter-academic/")
 
 (after! org (setq org-journal-dir "~/projects/orgmode/gtd/journal/"
                   org-journal-enable-agenda-integration t

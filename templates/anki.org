@@ -1,0 +1,9 @@
+* Item
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Close
+:ANKI_DECK: Inbox
+:END:
+** Front
+%?
+** Back
+%x

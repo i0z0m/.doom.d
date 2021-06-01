@@ -33,5 +33,21 @@
 (package! ob-mermaid)
 (package! mermaid-mode)
 (package! ox-twbs)
+;(package! gnuplot)
+;(package! gnuplot-mode)
 (package! deadgrep)
-(package! graphviz-dot-mode)
+;(package! graphviz-dot-mode)
+
+;; dependency for Emacs Application Framework
+(package! ctable)
+(package! deferred)
+(package! epc)
+(package! s)
+
+; personal
+(package! fcitx)
+(package! org-pomodoro)
+(package! anki-editor)
+(package! ox-hugo)
+(package! ox-rst)
+(package! ox-gfm)

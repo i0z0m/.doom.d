@@ -16,29 +16,30 @@ return its contents to the kill-ring. This function will enable you to do just
 that.
 
 #+begin_src emacs-lisp
-(defun nm/return-entry-property-names ()
-  "Returns a list of property names excluding the DEFAULT org-mode property names."
-  (let ((my-list (org-entry-properties))
-        (temp-list nil)
-        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
-    (dolist (i my-list) (push (car i) temp-list))
-    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
-    temp-list))
-(nm/return-entry-property-names)
-
-(defun nm/return-entry-property-value-kill-ring ()
-  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
-  (interactive)
-  (let* ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names)))
-        (results (org-entry-get nil choice)))
-    (kill-new results)
-    (message (format "'%s' was copied to kill-ring" results))))
-
-(map! :after org
-      :map org-mode-map
-      :leader
-      :prefix ("z" . "nicks functions")
-      :desc "Copy property value to kill-ring" "x" #'nm/return-entry-property-value-kill-ring)
+;;FIXME org-entry-properties
+;;(defun nm/return-entry-property-names ()
+;;  "Returns a list of property names excluding the DEFAULT org-mode property names."
+;;  (let ((my-list (org-entry-properties))
+;;        (temp-list nil)
+;;        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
+;;    (dolist (i my-list) (push (car i) temp-list))
+;;    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
+;;    temp-list))
+;;(nm/return-entry-property-names)
+;;
+;;(defun nm/return-entry-property-value-kill-ring ()
+;;  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
+;;  (interactive)
+;;  (let* ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names)))
+;;        (results (org-entry-get nil choice)))
+;;    (kill-new results)
+;;    (message (format "'%s' was copied to kill-ring" results))))
+;;
+;;(map! :after org
+;;      :map org-mode-map
+;;      :leader
+;;      :prefix ("z" . "nicks functions")
+;;      :desc "Copy property value to kill-ring" "x" #'nm/return-entry-property-value-kill-ring)
 #+end_src
 
 ** Classification System
@@ -55,21 +56,22 @@ is a way to put a template around those items that remain original to org-mode
 and does not interfere.
 
 #+begin_src emacs-lisp
-(defun nm/return-entry-property-names ()
-  "Returns a list of property names excluding the DEFAULT org-mode property names."
-  (let ((my-list (org-entry-properties))
-        (temp-list nil)
-        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
-    (dolist (i my-list) (push (car i) temp-list))
-    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
-    temp-list))
-(nm/return-entry-property-names)
-
-(defun nm/return-entry-property-value-kill-ring ()
-  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
-  (interactive)
-  (let ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names))))
-    (kill-new (org-entry-get nil choice))))
+;;FIXME org-entry-properties
+;;(defun nm/return-entry-property-names ()
+;;  "Returns a list of property names excluding the DEFAULT org-mode property names."
+;;  (let ((my-list (org-entry-properties))
+;;        (temp-list nil)
+;;        (discard-list '("ITEM" "PRIORITY" "FILE" "BLOCKED")))
+;;    (dolist (i my-list) (push (car i) temp-list))
+;;    (dolist (i discard-list) (setq temp-list (remove i temp-list)))
+;;    temp-list))
+;;(nm/return-entry-property-names)
+;;
+;;(defun nm/return-entry-property-value-kill-ring ()
+;;  "Returns a list of properties for the current headline and inserts the contents to the kill ring."
+;;  (interactive)
+;;  (let ((choice (ivy-completing-read "entry: " (nm/return-entry-property-names))))
+;;    (kill-new (org-entry-get nil choice))))
 #+end_src
 
 #+begin_src emacs-lisp
@@ -94,8 +96,9 @@ and does not interfere.
       :prefix ("z" . "nicks functions")
       :desc "Clarify Properties" "c" #'nm/org-clarify-properties)
 
-(unless (ivy-completing-read "select: " '("Something"))
-  (error "no output"))
+;;FIXME Something
+;;(unless (ivy-completing-read "select: " '("Something"))
+;;  (error "no output"))
 #+end_src
 ** Bullet Journal
 New capture template system that integrated the idea of a bullet journal for
@@ -497,7 +500,7 @@ These are some items that are required outside of the normal DOOM EMACS
 installation, before you can use this config. The idea here is to keep this
 minimum so as much of this is close to regular DOOM EMACS.
 1. *SQLITE3 Installation*: You will need to install sqlite3, typicalled installed via your package manager as ~sudo apt install sqlite3~
-2. I use a few different monospace fonts: [[https://input.fontbureau.com/download/][Input]], [[http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2][DejaVu]], [[https://github.com/tonsky/FiraCode][FiraCode]], [[google:IBM Plex Mono font Download][IBM Plex Mono]] and [[google:Roboto Mono Font Download][Roboto Mono]].
+2. I use a few different monospace fonts: [[https://github.com/miiton/Cica][Cica]], [[https://input.fontbureau.com/download/][Input]], [[http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2][DejaVu]], [[https://github.com/tonsky/FiraCode][FiraCode]], [[google:IBM Plex Mono font Download][IBM Plex Mono]] and [[google:Roboto Mono Font Download][Roboto Mono]].
 
 * Initial-Settings
 
@@ -509,8 +512,8 @@ TODO: I need to change this heading to "Hardened settings" and put in here
 things that typically never change.
 
 #+BEGIN_SRC emacs-lisp
-(setq user-full-name "Nick Martin"
-      user-mail-address "nmartin84@gmail.com")
+(setq user-full-name "i0z0m"
+      user-mail-address "i0z0mu@gmail.com")
 
 (display-time-mode 1)
 (setq display-time-day-and-date t)
@@ -590,7 +593,7 @@ increase the quality of life when working from my terminal window.
   (and
    (bind-key "C-<down>" #'+org/insert-item-below)
    ;(setq doom-theme nil)
-   (setq doom-font (font-spec :family "Roboto Mono" :size 20))))
+   (setq doom-font (font-spec :family "Roboto Mono" :size 16))))
 #+END_SRC
 
 Now I add my default folders and files that I want emacs/org-mode to use:
@@ -602,23 +605,22 @@ Now I add my default folders and files that I want emacs/org-mode to use:
 
 Next we configure popup-rules and default fonts.
 #+BEGIN_SRC emacs-lisp
-(after! org (set-popup-rule! "^\\*lsp-help" :side 'bottom :size .30 :select t)
-  (set-popup-rule! "*helm*" :side 'right :size .30 :select t)
-  (set-popup-rule! "*Org QL View:*" :side 'right :size .25 :select t)
-  (set-popup-rule! "*Org Note*" :side 'bottom :size .35 :select t)
-  (set-popup-rule! "*Capture*" :side 'left :size .30 :select t)
-  (set-popup-rule! "*Python:ob-ipython-py*" :side 'right :size .25 :select t)
-  (set-popup-rule! "*eww*" :side 'right :size .30 :select t)
-  (set-popup-rule! "*CAPTURE-*" :side 'left :size .30 :select t))
+(after! org (set-popup-rule! "^\\*lsp-help" :side 'bottom :size .20 :select t)
+  (set-popup-rule! "*helm*" :side 'right :size .20 :select t)
+  (set-popup-rule! "*Org QL View:*" :side 'right :size .22 :select t)
+  (set-popup-rule! "*Org Note*" :side 'bottom :size .22 :select t)
+  (set-popup-rule! "*Capture*" :side 'left :size .20 :select t)
+  (set-popup-rule! "*Python:ob-ipython-py*" :side 'right :size .18 :select t)
+  (set-popup-rule! "*eww*" :side 'right :size .20 :select t)
+  (set-popup-rule! "*CAPTURE-*" :side 'left :size .20 :select t))
                                         ;(set-popup-rule! "*Org Agenda*" :side 'right :size .35 :select t))
 
 (setq inhibit-compacting-font-caches t)
-(setq doom-font (font-spec :family "IBM Plex Mono" :size 24 :weight 'light)
-      doom-big-font (font-spec :family "IBM Plex Mono" :size 26 :weight 'light)
+(setq doom-font (font-spec :family "IBM Plex Mono" :size 16 :weight 'light)
+      doom-big-font (font-spec :family "IBM Plex Mono" :size 18 :weight 'light)
       doom-variable-pitch-font (font-spec :family "IBM Plex Mono" :weight 'regular :size 20)
       doom-serif-font (font-spec :family "IBM Plex Mono" :weight 'light))
 
-(when (equal window-system 'x) (toggle-frame-fullscreen))
 
 (after! org
   (custom-set-faces!
@@ -642,6 +644,8 @@ Next we configure popup-rules and default fonts.
 ;;   (setq doom-font (font-spec :family "InputMono" :size 18)
 ;;         doom-big-font (font-spec :family "InputMono" :size 22)))
 #+END_SRC
+
+#+RESULTS:
 
 * Org-Mode
 Here we add any requirements before org-mode starts to load. Some key notes here
@@ -1013,7 +1017,10 @@ word *:project:* so that all child task are treated as part of the project.
 
 ** Loading agenda settings
 #+BEGIN_SRC emacs-lisp
-(after! org (setq org-agenda-diary-file "~/projects/orgmode/diary.org"
+(after! org (setq org-agenda-files (append (file-expand-wildcards "~/projects/orgmode/*/*.org"))
+                                          ;(file-expand-wildcards "/mnt/c/Users/USER/Dropbox/org/*/*.org"))
+                                          ;or $ln -s /mnt/c/Users/USER/Dropbox/org ~/projects/orgmode
+                  org-agenda-diary-file "~/projects/orgmode/diary.org"
                   org-agenda-dim-blocked-tasks nil ; This has funny behavior, similar to checkbox dependencies.
                   org-agenda-use-time-grid nil
                   org-agenda-tags-column 0
@@ -1026,8 +1033,6 @@ word *:project:* so that all child task are treated as part of the project.
                   org-enforce-todo-checkbox-dependencies nil ; This has funny behavior, when t and you try changing a value on the parent task, it can lead to Emacs freezing up. TODO See if we can fix the freezing behavior when making changes in org-agenda-mode.
                   org-enforce-todo-dependencies t
                   org-habit-show-habits t))
-
-(after! org (setq org-agenda-files (append (file-expand-wildcards "~/projects/orgmode/gtd/*.org") (file-expand-wildcards "~/projects/orgmode/gtd/*/*.org"))))
 #+END_SRC
 
 ** Logging and Drawers
@@ -1075,12 +1080,12 @@ REVIEW do we need to re-define our publish settings for the ROAM directory?
                      :base-directory "~/projects/orgmode/"
                      :recursive t
                      :base-extension "jpg\\|jpeg\\|png\\|pdf\\|css\\|svg"
-                     :publishing-directory "~/projects/nmartin84.github.io"
+                     :publishing-directory "~/projects/i0z0m.github.io"
                      :publishing-function org-publish-attachment)
                     ("notes"
                      :base-directory "~/projects/orgmode/"
                      :base-extension "org"
-                     :publishing-directory "~/projects/nmartin84.github.io"
+                     :publishing-directory "~/projects/i0z0m.github.io"
                      :section-numbers nil
                      :with-properties nil
                      :with-drawers nil
@@ -1229,7 +1234,7 @@ Eventually I would like to have org-mind-map generating charts like Sacha's [[ht
 #+END_SRC
 ** Hugo
 #+begin_src emacs-lisp
-(setq hugo_base_dir "~/projects/braindump/")
+(setq hugo_base_dir "~/projects/starter-academic/")
 #+end_src
 
 ** Journal
